@@ -49,6 +49,8 @@ Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊�
 
 #### Java
 
+[code](https://raw.githubusercontent.com/luzi82/devcommonsense/master/example/timezone/java/Example.java)
+
 ```
 ZoneId chinaZone = ZoneId.of("Asia/Shanghai");
 ZoneId gmtZone = ZoneId.of("GMT");
