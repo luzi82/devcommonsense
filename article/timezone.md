@@ -44,3 +44,39 @@ Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊�
 * 某些地區有[日光節約時間](https://zh.wikipedia.org/wiki/%E5%A4%8F%E6%97%B6%E5%88%B6) (Daylight saving time) ，在夏季時間會調快一小時。
 * 如果服務對象不是單一時區。營運公告中有提及到時間的地方，應該要註明時區。
 * 如果有些資料與時間掛勾，例如課金遊戲的體力恢復，或者登入獎勵，或者活動的舉行時間，就應該以 64 bit 的 epoch time 做時間判定。（另見 [與時間掛勾的資料](time_related_data.md) ）
+
+### 編程
+
+#### Java
+
+```
+// China have DST in 1989, so it is UTC+9 instead of UTC+8
+ZonedDateTime t8964china = ZonedDateTime.of(1989,6,4,0,0,0,0,chinaZone);
+System.out.println("t8964china = "+t8964china.toString());
+// t8964china = 1989-06-04T00:00+09:00[Asia/Shanghai]
+
+// Convert to GMT
+ZonedDateTime t8964gmt   = t8964china.withZoneSameInstant(gmtZone);
+System.out.println("t8964gmt   = "+t8964gmt.toString());
+// t8964gmt   = 1989-06-03T15:00Z[GMT]
+
+// China is UTC+8 in winter
+ZonedDateTime t8914china = ZonedDateTime.of(1989,1,4,0,0,0,0,chinaZone);
+System.out.println("t8914china = "+t8914china.toString());
+// t8914china = 1989-01-04T00:00+08:00[Asia/Shanghai]
+
+// China do not have DST after 1991, it is UTC+8
+ZonedDateTime t1864china = ZonedDateTime.of(2018,6,4,0,0,0,0,chinaZone);
+System.out.println("t1864china = "+t1864china.toString());
+// t1864china = 2018-06-04T00:00+08:00[Asia/Shanghai]
+
+// Number of hour between 8964 and 8914, odd number
+long diff = t8914china.until(t8964china,ChronoUnit.HOURS);
+System.out.println("t8964china - t1864china = "+diff+" hours");
+// t8964china - t1864china = 3623 hours
+
+// Compare between gmt and china time, same result
+diff = t8914china.until(t8964gmt,ChronoUnit.HOURS);
+System.out.println("t8964gmt   - t1864china = "+diff+" hours");
+// t8964gmt   - t1864china = 3623 hours
+```
