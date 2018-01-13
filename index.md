@@ -2,10 +2,10 @@
 
 ### 時間
 
-* [時區](timezone.md)
+* [時區](article/timezone.md)
 * 裝置時鐘的不同步
 * 裝置時鐘的不穩定
-* [與時間掛勾的資料](time_related_data.md)
+* [與時間掛勾的資料](article/time_related_data.md)
 * 時間不是資料主鍵
 * 閏秒
 
@@ -17,7 +17,7 @@
 ### 國際化和本地化
 
 * Unicode
-* [時區](timezone.md)
+* [時區](article/timezone.md)
 * 輸入法
 * 字型
 * 政治因素
@@ -31,7 +31,7 @@
 ### 網絡與安全性
 
 * 網絡錯誤及處理手法
-* [不要相信用戶端](dont_trust_client.md)
+* [不要相信用戶端](article/dont_trust_client.md)
 * 資料的存放
 * 區域 IP 封鎖
 * 破解的技術門檻
