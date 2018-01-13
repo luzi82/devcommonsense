@@ -8,7 +8,7 @@
 
 ### Aniplex《きららファンタジア》
 
-Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊戲軟件《[きららファンタジア](https://kirarafantasia.com/)》。發行地區只限日本，所以玩家只能從日本的 App Store / Google Play，或其他不正常渠通下載。
+Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊戲軟件《[きららファンタジア](https://kirarafantasia.com/)》。發行地區只限日本，所以只有日本玩家可以從日本的 App Store / Google Play。至於日本以外的玩家，iOS 的話可以用假日本賬號下載，而 Android 則要用其他不正常渠通下載。
 
 ![きららファンタジア](../image/kirarafantasia_cover.jpg)
 
@@ -17,6 +17,8 @@ Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊�
 ![きららファンタジア login bonus](../image/kirarafantasia_loginbonus.jpg)
 
 然而，在日本 UTC+9 以外的玩家，例如香港和中國 UTC+8 的玩家，卻可以在一天得到登入禮物兩次。經玩家測試後，懷疑是時區不同導致遊戲出錯。（另見 [不要相信用戶端](dont_trust_client.md) ）
+
+雖然這個問題是日本時區以外限定。但由於設定時區成本很低，所以也有日本玩家也使用這個漏洞。
 
 ### 任天堂《Splatoon 2》
 
