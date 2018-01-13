@@ -78,11 +78,11 @@ System.out.println("t1864china = "+t1864china.toString());
 
 // Number of hour between 8964 and 8914, odd number
 long diff = t8914china.until(t8964china,ChronoUnit.HOURS);
-System.out.println("t8964china - t1864china = "+diff+" hours");
-// t8964china - t1864china = 3623 hours
+System.out.println("t8964china - t8914china = "+diff+" hours");
+// t8964china - t8914china = 3623 hours
 
 // Compare between gmt and china time, same result
 diff = t8914china.until(t8964gmt,ChronoUnit.HOURS);
-System.out.println("t8964gmt   - t1864china = "+diff+" hours");
-// t8964gmt   - t1864china = 3623 hours
+System.out.println("t8964gmt   - t8914china = "+diff+" hours");
+// t8964gmt   - t8914china = 3623 hours
 ```
