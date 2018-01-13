@@ -8,7 +8,7 @@
 
 ### Aniplex《きららファンタジア》
 
-Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊戲軟件《[きららファンタジア](https://kirarafantasia.com/)》。發行地區只限日本，所以只有日本玩家可以從日本的 App Store / Google Play。至於日本以外的玩家，iOS 的話可以用假日本賬號下載，而 Android 則要用其他不正常渠通下載。
+Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊戲軟件[《きららファンタジア》](https://kirarafantasia.com/)。發行地區只限日本，所以只有日本玩家可以從日本的 App Store / Google Play。至於日本以外的玩家，iOS 的話可以用假日本賬號下載，而 Android 則要用其他不正常渠通下載。
 
 ![きららファンタジア](../image/kirarafantasia_cover.jpg)
 
@@ -22,7 +22,7 @@ Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊�
 
 ### 任天堂《Splatoon 2》
 
-任天堂在 2017 年 7 月 21 日，於旗下的 Switch 主機推出遊戲軟件《[Splatoon 2](https://splatoon.nintendo.com/)》。發行地區包括美國，歐洲，日本和台灣。
+任天堂在 2017 年 7 月 21 日，於旗下的 Switch 主機推出遊戲軟件[《Splatoon 2》](https://splatoon.nintendo.com/)。發行地區包括美國，歐洲，日本和台灣。
 
 ![Splatoon 2](../image/splatoon_cover.jpg)
 
