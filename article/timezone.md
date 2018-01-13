@@ -50,6 +50,9 @@ Aniplex 在 2017 年 12 月 11 日，於 iOS 及 Android 平台推出手機遊�
 #### Java
 
 ```
+ZoneId chinaZone = ZoneId.of("Asia/Shanghai");
+ZoneId gmtZone = ZoneId.of("GMT");
+
 // China have DST in 1989, so it is UTC+9 instead of UTC+8
 ZonedDateTime t8964china = ZonedDateTime.of(1989,6,4,0,0,0,0,chinaZone);
 System.out.println("t8964china = "+t8964china.toString());
