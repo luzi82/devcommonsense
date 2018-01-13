@@ -9,7 +9,7 @@
 
 #### Aniplex《きららファンタジア》
 
-Aniplex 在 2017 年 12 月，於 iOS 及 Android 平台推出手機遊戲[《きららファンタジア》](https://kirarafantasia.com/)。發行地區只限日本，只有日本玩家可以從日本 App Store / Google Play 下載。至於日本以外的玩家，iOS 可以用假日本賬號下載，而 Android 則要用其他不正常渠通下載。
+Aniplex 投資近 25 億日元，在 2017 年 12 月於 iOS 及 Android 平台推出手機遊戲[《きららファンタジア》](https://kirarafantasia.com/)。發行地區只限日本，只有日本玩家可以從日本 App Store / Google Play 下載。至於日本以外的玩家，iOS 可以用假日本賬號下載，而 Android 則要用其他不正常渠通下載。
 
 ![きららファンタジア](../image/kirarafantasia_cover.jpg)
 
