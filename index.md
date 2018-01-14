@@ -5,7 +5,7 @@
 * [時區](article/timezone.md)
 * 裝置時鐘的不同步
 * 裝置時鐘的不穩定
-* [與時間掛勾的資料](article/time_related_data.md)
+* [當資料與時間掛勾](article/time_related_data.md)
 * 時間不是資料主鍵
 * 閏秒
 
