@@ -45,54 +45,38 @@
 * 某些地區有[日光節約時間](https://zh.wikipedia.org/wiki/%E5%A4%8F%E6%97%B6%E5%88%B6) (Daylight saving time) ，在夏季時間會調快一小時。
 * 儘可能使用坊間既有的程式庫做時間計算，而且要定期更新。例如，現在沒有多少人會知道 1989 年中國是行日光節約時間，而台灣也有民眾聯署要求由 UTC+8 改變為 UTC+9 。現有的時間程式庫都會處理這些改變。
 * 如果服務對象不是單一時區，就要考慮為文字做時區轉換。如果無法做時區轉換，就要在提及時間的地方註明時區。
-* 處理時間計算的兩種方法，各有優點缺點
-  1. 使用同時包含時間時區的資料類別
-     * 例如 Java 8 的 ZonedDateTime
-     * 計算加減數或做比較時，必需使用 function call。
-     * 由於可以直接轉換成文字顯示給使用者，如果開發者忘了轉換時區，就會有顯示問題。
-     * Database 或 debug 的 raw data，如 ```1989-06-04T00:00+09:00[Asia/Shanghai]``` ，人類可以理解。
-  1. Epoch time，又稱 Unix time
-     * 定義是與 1970-01-01 UTC+0 之間的秒數
-     * 與時區完全脫勾
-       * 格林威治標準時間的 1989 年 6 月 4 日 00:00，轉換到 epoch time 是 ```612921600```。
-       * 至於中國的 1989 年 6 月 4 日 00:00，由於中國當時的時區是 UTC+9，所以計算時要把 9 小時 = 32400 加進去，轉換到 epoch time 就會變成 ```612889200```。
-       * 當 ```612889200``` 轉換到格林威治標準時間，就會變成 1989 年 6 月 3 日 15:00，即是中國的 1989 年 6 月 4 日 00:00。
-     * 必須使用 64 bit 數值，否則會有 [2038 年問題](https://zh.wikipedia.org/wiki/2038%E5%B9%B4%E9%97%AE%E9%A2%98)。
-     * 計算過程非常直觀，只需要簡單的加減數，亦無需轉換時區。
-     * 由於 epoch time 不能直接顯示給使用者，必需做轉換，結果強迫所有開發者做轉換，避免錯誤顯示時區的問題。
-     * Database 或 debug 的 raw data，例如 ```612889200```，人類不能理解。
 
-### 編程
+### 編程技巧
 
-#### Java 8
+處理時間計算有兩種方法，各有優點缺點。
 
-[code](https://raw.githubusercontent.com/luzi82/devcommonsense/master/example/timezone/java/Example.java)
+#### 使用同時包含時間時區的資料類別
+
+以 Java 8 為例。 Java 8 推出 ZonedDateTime，同時包含時間和時區。
 
 ```
 ZoneId chinaZone = ZoneId.of("Asia/Shanghai");
-ZoneId gmtZone = ZoneId.of("GMT");
 
-// DateTime+TimeZone method
+// China is UTC+8 normally
+ZonedDateTime t8914china = ZonedDateTime.of(1989,1,4,0,0,0,0,chinaZone);
+System.out.println("t8914china = "+t8914china.toString());
+// t8914china = 1989-01-04T00:00+08:00[Asia/Shanghai]
 
-// China have DST in 1989, so it is UTC+9 instead of UTC+8
+// China have DST in 1989 June, so it is UTC+9 instead of UTC+8
 ZonedDateTime t8964china = ZonedDateTime.of(1989,6,4,0,0,0,0,chinaZone);
 System.out.println("t8964china = "+t8964china.toString());
 // t8964china = 1989-06-04T00:00+09:00[Asia/Shanghai]
+```
+
+支援時區轉換和計算，必需 call function。絕對不要直接用年月日時分秒資料作計算。
+
+```
+ZoneId gmtZone = ZoneId.of("GMT");
 
 // Convert to GMT
 ZonedDateTime t8964gmt   = t8964china.withZoneSameInstant(gmtZone);
 System.out.println("t8964gmt   = "+t8964gmt.toString());
 // t8964gmt   = 1989-06-03T15:00Z[GMT]
-
-// China is UTC+8 in winter
-ZonedDateTime t8914china = ZonedDateTime.of(1989,1,4,0,0,0,0,chinaZone);
-System.out.println("t8914china = "+t8914china.toString());
-// t8914china = 1989-01-04T00:00+08:00[Asia/Shanghai]
-
-// China do not have DST after 1991, it is UTC+8
-ZonedDateTime t1864china = ZonedDateTime.of(2018,6,4,0,0,0,0,chinaZone);
-System.out.println("t1864china = "+t1864china.toString());
-// t1864china = 2018-06-04T00:00+08:00[Asia/Shanghai]
 
 // Number of hour between 8964 and 8914, odd number
 long diff = t8914china.until(t8964china,ChronoUnit.HOURS);
@@ -103,19 +87,35 @@ System.out.println("t8964china - t8914china = "+diff+" hours");
 diff = t8914china.until(t8964gmt,ChronoUnit.HOURS);
 System.out.println("t8964gmt   - t8914china = "+diff+" hours");
 // t8964gmt   - t8914china = 3623 hours
+```
 
-// Timezone independent epoch timestamp method
+Database 或 debug 的 raw data 顯示為 ```1989-06-04T00:00+09:00[Asia/Shanghai]``` ，可以直接閱讀。但如果顯示給使用者時，忘了轉換時區，就會有顯示問題。
+     
+#### Epoch time
+     
+Epoch time，又稱 Unix time，定義是與 1970-01-01 UTC+0 之間的秒數。
 
+例如中國的 1989 年 6 月 4 日 00:00，轉換到 epoch time 就是 ```612889200```。
+
+```
 // Convert ZonedDateTime to epoch second
 long t8964Sec = t8964china.toInstant().getEpochSecond();
 System.out.println("t8964Sec   = "+t8964Sec);
 // t8964Sec   = 612889200
+```
 
+當 ```612889200``` 轉換到格林威治標準時間，就會變成 1989 年 6 月 3 日 15:00。
+
+```
 // Convert epoch second to GMT
 t8964gmt = ZonedDateTime.ofInstant(Instant.ofEpochSecond(t8964Sec),gmtZone);
 System.out.println("t8964gmt   = "+t8964gmt.toString());
 // t8964gmt   = 1989-06-03T15:00Z[GMT]
+```
 
+計算過程非常直觀，只需要簡單的加減數，亦無需轉換時區。
+
+```
 // Number of hour between 8964 and 8914
 long t8914Sec = t8914china.toInstant().getEpochSecond();
 diff = t8964Sec - t8914Sec;
@@ -123,6 +123,14 @@ diff /= 60*60; // number of sec in hour
 System.out.println("t8964china - t8914china = "+diff+" hours");
 // t8964china - t8914china = 3623 hours
 ```
+
+必須使用 64 bit 數值，否則會有 [2038 年問題](https://zh.wikipedia.org/wiki/2038%E5%B9%B4%E9%97%AE%E9%A2%98)。
+
+Database 或 debug 的 raw data 顯示為 ```612889200``` ，閱讀非常困難。由於不能直接顯示給使用者，必需做轉換，卻可以避免錯誤顯示時區的問題。
+
+### 各語言的編碼例子
+
+* [Java 8](https://raw.githubusercontent.com/luzi82/devcommonsense/master/example/timezone/java/Example.java)
 
 ### Extra
 
