@@ -5,7 +5,7 @@
 以下檔案包括針對 devcommonsense.com 網站的設定。如果你打算製作自己的網站，就要修改這些檔案。
 
 * CNAME
-* _ config.yml, google _ analytics 項目
+* _config.yml, google_analytics 項目
 
 ### 建議
 
