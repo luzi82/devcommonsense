@@ -108,7 +108,7 @@ System.out.println("t8964Sec   = "+t8964Sec);
 
 ```
 // Convert epoch second to GMT
-t8964gmt = ZonedDateTime.ofInstant(Instant.ofEpochSecond(t8964Sec),gmtZone);
+t8964gmt = ZonedDateTime.ofInstant(612889200, gmtZone);
 System.out.println("t8964gmt   = "+t8964gmt.toString());
 // t8964gmt   = 1989-06-03T15:00Z[GMT]
 ```
