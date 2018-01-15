@@ -14,5 +14,5 @@
   * 如果真的有很多人用刀捅自己的屁股，就寫吧。
   * 嘗識把「NOT TODO」轉換成「TODO」，例如把「不要用刀捅自己的屁股」，改寫成「保護自己的屁股」。
 * 如果有多個解決方法，而各有利害，都應該列舉出來
-  * 避免宗教崇拜，一口咬定「vim 比 emacs 好」。
+  * 避免宗教崇拜，不要一口咬定「vim 比 emacs 好」。
   * 以文章[《時區》](http://devcommonsense.com/article/timezone.html)為例。我個人傾向使用 timestamp 多於 DateTime+TimeZone，但依然把兩個方法都列舉出來。
