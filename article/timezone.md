@@ -134,5 +134,6 @@ Database 或 debug 的 raw data 顯示為 ```612889200``` ，閱讀非常困難�
 
 ### Extra
 
+* [裝置時鐘的不同步](clock_unsync.md)
 * [當資料與時間掛勾](time_related_data.md)
 * [YouTube: The Problem with Time & Timezones - Computerphile](https://www.youtube.com/watch?v=-5wpm-gesOY)

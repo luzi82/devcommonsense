@@ -3,7 +3,7 @@
 ### 時間
 
 * [時區](article/timezone.md)
-* 裝置時鐘的不同步
+* [裝置時鐘的不同步](article/clock_unsync.md)
 * 裝置時鐘的不穩定
 * [當資料與時間掛勾](article/time_related_data.md)
 * 時間不是資料主鍵
